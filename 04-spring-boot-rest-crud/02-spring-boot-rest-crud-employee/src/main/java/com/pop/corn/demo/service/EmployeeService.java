@@ -1,0 +1,10 @@
+package com.pop.corn.demo.service;
+
+import com.pop.corn.demo.entity.Employee;
+
+import java.util.List;
+
+public interface EmployeeService {
+
+    List<Employee> findAll();
+}
