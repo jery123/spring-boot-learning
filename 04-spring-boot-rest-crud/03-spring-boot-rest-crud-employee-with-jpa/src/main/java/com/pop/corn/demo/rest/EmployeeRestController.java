@@ -1,6 +1,5 @@
 package com.pop.corn.demo.rest;
 
-import com.pop.corn.demo.dao.EmployeeDAO;
 import com.pop.corn.demo.entity.Employee;
 import com.pop.corn.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +14,6 @@ import java.util.Map;
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-    /*
-     * Using the DAO directly
-     */
-    /*private EmployeeDAO employeeDAO;
-
-    // quick and dirty: inject employee dao
-    public EmployeeRestController(EmployeeDAO theEmployeeDAO) {
-        employeeDAO = theEmployeeDAO;
-    }*/
 
     /*
      * Now going through Service
