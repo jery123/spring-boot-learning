@@ -5,6 +5,7 @@ import com.pop.corn.demo.dao.EmployeeRepository;
 import com.pop.corn.demo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,12 +13,11 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeRepository  employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository theEmployeRepository) {
-
-        employeeRepository = theEmployeRepository;
+    public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
+        employeeRepository = theEmployeeRepository;
     }
 
     @Override
@@ -27,24 +27,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findById(int theId) {
+
         Optional<Employee> result = employeeRepository.findById(theId);
 
         Employee employee = null;
 
-        if(result.isPresent()){
+        if (result.isPresent()) {
             employee = result.get();
-        }else {
-            throw new RuntimeException("Employee not found with id - " + theId);
+        }else{
+            throw new RuntimeException("Did not find employee id - " + theId);
         }
+
 
         return employee;
     }
 
+    @Transactional
     @Override
     public Employee save(Employee theEmployee) {
         return employeeRepository.save(theEmployee);
     }
 
+    @Transactional
     @Override
     public void deleteById(int theId) {
         employeeRepository.deleteById(theId);

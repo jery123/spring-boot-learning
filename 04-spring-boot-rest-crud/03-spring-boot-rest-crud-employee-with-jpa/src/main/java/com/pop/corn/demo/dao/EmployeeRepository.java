@@ -4,5 +4,4 @@ import com.pop.corn.demo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-    // that is all... we don't need to write code
 }
