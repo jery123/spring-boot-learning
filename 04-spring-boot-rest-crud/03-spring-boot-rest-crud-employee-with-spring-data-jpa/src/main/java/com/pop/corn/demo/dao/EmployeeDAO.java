@@ -1,10 +1,10 @@
-package com.pop.corn.demo.service;
+package com.pop.corn.demo.dao;
 
 import com.pop.corn.demo.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeService {
+public interface EmployeeDAO {
 
     List<Employee> findAll();
 
@@ -12,5 +12,5 @@ public interface EmployeeService {
 
     Employee save(Employee theEmployee);
 
-    void deleteById(int theId); 
+    void deleteById(int theId);
 }
