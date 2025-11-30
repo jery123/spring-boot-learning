@@ -1,6 +1,5 @@
 package com.pop.corn.demo.rest;
 
-import com.pop.corn.demo.dao.EmployeeDAO;
 import com.pop.corn.demo.entity.Employee;
 import com.pop.corn.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
