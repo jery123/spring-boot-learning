@@ -24,7 +24,7 @@ public class DemoSecurityConfig {
         theUserDetailsManager
                 .setUsersByUsernameQuery("select user_id, pw, active from members where user_id=?");
         theUserDetailsManager
-                .setAuthoritiesByUsernameQuery("select user_id, roles from roles where user_id=?");
+                .setAuthoritiesByUsernameQuery("select user_id, role from roles where user_id=?");
 
         return theUserDetailsManager;
     }
