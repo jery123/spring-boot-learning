@@ -9,10 +9,8 @@
 </head>
 
 <body>
-   Hello World of Spring!
+    <h1 th:text="'Hello ' + ${theName}"/>
+    <p th:text="'Time on the server is ' + ${theDate}" class="funny"/>
 
-<br><br>
-
-Student name: <span th:text="${param.studentName}" />
 </body>
 </html>
