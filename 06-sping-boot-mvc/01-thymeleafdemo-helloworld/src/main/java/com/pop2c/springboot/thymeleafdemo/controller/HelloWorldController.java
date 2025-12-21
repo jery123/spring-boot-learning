@@ -3,6 +3,8 @@ package com.pop2c.springboot.thymeleafdemo.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,7 +19,7 @@ public class HelloWorldController {
     }
 
     // need a controller method to process the HTML Form
-    @RequestMapping("/processForm")
+    @PostMapping("/processForm")
     public String processForm(){
         return "helloworld";
     }
