@@ -46,6 +46,19 @@
            th:each="tempLang : ${languages}"
            th:value="${tempLang}"
            th:text="${tempLang}"/>
+
+    <br><br>
+
+
+    <p>Favorite Systems:</p>
+
+<!--    <input type="checkbox" th:field="*{favoriteSystems}" value="Linux"> Linux </input>-->
+<!--    <input type="checkbox" th:field="*{favoriteSystems}" value="macOS"> macOS </input>-->
+<!--    <input type="checkbox" th:field="*{favoriteSystems}" value="Microsoft Windows"> Microsoft Windows </input>-->
+        <!-- Dynamic way -->
+        <input type="checkbox" th:each="tempOS : ${systems}" th:field="*{favoriteSystems}" th:value="${tempOS}" th:text="${tempOS}"/> 
+
+
     <br><br>
 
     <input type="submit" value="Submit"/>
