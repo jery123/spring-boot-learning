@@ -1,8 +1,12 @@
 package com.pop2c.springdemo.mvc;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CustomerController {
@@ -12,5 +16,20 @@ public class CustomerController {
         theModel.addAttribute("customer", new Customer());
 
         return "customer-form"; // return the actal name of the view
+    }
+
+    @PostMapping("/processForm")
+    public String processForm(
+            @Valid @ModelAttribute("customer") Customer theCustomer,
+            BindingResult theBingingResult){
+        
+        System.out.println("Last name: |" + theCustomer.getLastName() + "|");
+
+        if (theBingingResult.hasErrors()) {
+            return "customer-form";
+        }else{
+            return "customer-confirmation";
+        }
+
     }
 }

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Customer Confrmation</title>
 </head>
 <body>
-$END$
+
+
+The customer is confirmed: <span th:text="${customer.firstName + ' ' + customer.lastName}"/>
+
+
 </body>
 </html>
