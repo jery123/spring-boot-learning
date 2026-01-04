@@ -1,6 +1,6 @@
-package com.pop2c.springboot.cruddemo.dao;
+package com.pop2c.springboot.thymeleafdemo.dao;
 
-import com.pop2c.springboot.cruddemo.entity.Employee;
+import com.pop2c.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {

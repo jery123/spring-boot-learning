@@ -1,7 +1,7 @@
-package com.pop2c.springboot.cruddemo.service;
+package com.pop2c.springboot.thymeleafdemo.service;
 
-import com.pop2c.springboot.cruddemo.dao.EmployeeRepository;
-import com.pop2c.springboot.cruddemo.entity.Employee;
+import com.pop2c.springboot.thymeleafdemo.dao.EmployeeRepository;
+import com.pop2c.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

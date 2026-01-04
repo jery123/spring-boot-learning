@@ -1,6 +1,6 @@
-package com.pop2c.springboot.cruddemo.service;
+package com.pop2c.springboot.thymeleafdemo.service;
 
-import com.pop2c.springboot.cruddemo.entity.Employee;
+import com.pop2c.springboot.thymeleafdemo.entity.Employee;
 
 import java.util.List;
 

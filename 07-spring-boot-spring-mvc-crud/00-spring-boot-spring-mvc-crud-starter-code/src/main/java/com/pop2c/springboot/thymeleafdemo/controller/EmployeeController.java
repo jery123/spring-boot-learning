@@ -1,7 +1,7 @@
-package com.pop2c.springboot.cruddemo.controller;
+package com.pop2c.springboot.thymeleafdemo.controller;
 
-import com.pop2c.springboot.cruddemo.entity.Employee;
-import com.pop2c.springboot.cruddemo.service.EmployeeService;
+import com.pop2c.springboot.thymeleafdemo.entity.Employee;
+import com.pop2c.springboot.thymeleafdemo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
