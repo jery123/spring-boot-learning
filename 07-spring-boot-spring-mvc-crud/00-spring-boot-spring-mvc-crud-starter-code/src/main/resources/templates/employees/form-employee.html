@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees Directory</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h3>Employee Directory</h3>
+        <hr>
+
+        <p class="h4 mb-4">Save Employee</p>
+
+        <form action="#" th:object="${employee}"
+                            th:action="@{/employees/save}">
+
+            <input type="text" th:field="*{firstName}" placeholder="First Name"
+                   class="form-control mb-4 w-25">
+            <input type="text" th:field="*{lastName}" placeholder="Last Name"
+                   class="form-control mb-4 w-25">
+            <input type="text" th:field="*{email}" placeholder="E-mail"
+                   class="form-control mb-4 w-25">
+
+            <input type="submit" class="btn btn-info col-2">
+
+
+        </form>
+
+        <hr>
+
+        <a th:href="@{/employees/list}">Back to Employees List</a>
+    </div>
+
+</body>
+</html>
