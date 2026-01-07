@@ -20,6 +20,9 @@
                             th:action="@{/employees/save}"
                             method="POST">
 
+            <!-- Add hidden field to handle update -->
+            <input type="hidden" th:field="*{id}">
+
             <input type="text" th:field="*{firstName}" placeholder="First Name"
                    class="form-control mb-4 w-25">
             <input type="text" th:field="*{lastName}" placeholder="Last Name"
