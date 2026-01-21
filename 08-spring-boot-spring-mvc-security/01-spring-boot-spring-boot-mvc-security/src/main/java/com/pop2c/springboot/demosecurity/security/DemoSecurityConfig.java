@@ -15,7 +15,29 @@ public class DemoSecurityConfig {
     //add support for JDBC ... no more hardcoded users
     @Bean
     public UserDetailsManager userDetailsManager(DataSource ds) {
-        return new JdbcUserDetailsManager(ds);
+
+        JdbcUserDetailsManager manager = new JdbcUserDetailsManager(ds);
+
+        manager.setUsersByUsernameQuery(
+                """
+                SELECT user_id AS username,
+                       pw      AS password,
+                       active  AS enabled
+                FROM members
+                WHERE user_id = ?
+                """
+        );
+
+        manager.setAuthoritiesByUsernameQuery(
+                """
+                SELECT user_id AS username,
+                       role    AS authority
+                FROM roles
+                WHERE user_id = ?
+                """
+        );
+
+        return manager;
        }
 
     @Bean
