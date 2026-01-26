@@ -25,8 +25,8 @@ public class DemoSecurityConfig {
     //authenticationProvider bean definition
     @Bean
     public DaoAuthenticationProvider authenticationProvider(UserService userService) {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userService); //set the custom user details service
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider(userService);
+//        auth.setUserDetailsService(userService); //set the custom user details service
         auth.setPasswordEncoder(passwordEncoder()); //set the password encoder - bcrypt
         return auth;
     }
