@@ -2,6 +2,7 @@ package com.pop2c.demo.entity;
 
 import jakarta.persistence.*;
 
+@Entity
 public class Instructor {
 
     @Id
