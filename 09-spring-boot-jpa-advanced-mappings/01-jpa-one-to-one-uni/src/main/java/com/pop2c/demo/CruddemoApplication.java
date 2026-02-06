@@ -12,7 +12,13 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class CruddemoApplication {
 
-	public static void main(String[] args) {
+    private final AppDAOImpl appDAOImpl;
+
+    public CruddemoApplication(AppDAOImpl appDAOImpl) {
+        this.appDAOImpl = appDAOImpl;
+    }
+
+    public static void main(String[] args) {
 		SpringApplication.run(CruddemoApplication.class, args);
 	}
 
@@ -22,11 +28,23 @@ public class CruddemoApplication {
 		return runner -> {
 //			createInstructor(theAppDAO);
 
-			findInstructor(theAppDAO);
+//			findInstructor(theAppDAO);
+            
+            deleteInstructor(theAppDAO);
 		};
 	}
 
-	private void findInstructor(AppDAO theAppDAO) {
+    private void deleteInstructor(AppDAO theAppDAO) {
+
+        int theId = 1;
+
+        System.out.println("Deleting instructor id:" + theId);
+
+        theAppDAO.deleteInstructorById(theId);
+        System.out.println("Done!");
+    }
+
+    private void findInstructor(AppDAO theAppDAO) {
 		int theId = 2	;
 
 		System.out.println("Finding instructor id:" + theId);
