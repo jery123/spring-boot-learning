@@ -1,6 +1,7 @@
 package com.pop2c.demo.dao;
 
 import com.pop2c.demo.entity.Instructor;
+import com.pop2c.demo.entity.InstructorDetail;
 
 public interface AppDAO {
 
@@ -9,4 +10,6 @@ public interface AppDAO {
     Instructor findInstructorById(int theId);
 
     void deleteInstructorById(int theId);
+
+    InstructorDetail findInstructorDetailById(int theId);
 }
