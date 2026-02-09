@@ -40,7 +40,7 @@ public class CruddemoApplication {
 
 	private void deleteInstructorDetail(AppDAO theAppDAO) {
 
-		int theId = 2;
+		int theId = 3;
 		System.out.println("Deleting the instructor detqil" + theId);
 
 		theAppDAO.deleteInstructorDetailById(theId);
