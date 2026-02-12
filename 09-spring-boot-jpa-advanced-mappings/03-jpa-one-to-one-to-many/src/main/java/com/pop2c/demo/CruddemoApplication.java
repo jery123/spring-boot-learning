@@ -2,6 +2,7 @@ package com.pop2c.demo;
 
 import com.pop2c.demo.dao.AppDAO;
 import com.pop2c.demo.dao.AppDAOImpl;
+import com.pop2c.demo.entity.Course;
 import com.pop2c.demo.entity.Instructor;
 import com.pop2c.demo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -34,11 +35,47 @@ public class CruddemoApplication {
 
 //			findInstructorDetail(theAppDAO);
 
-			deleteInstructorDetail(theAppDAO);
+//			deleteInstructorDetail(theAppDAO);
+
+            createInstructorWithCourses(theAppDAO);
 		};
 	}
 
-	private void deleteInstructorDetail(AppDAO theAppDAO) {
+    private void createInstructorWithCourses(AppDAO theAppDAO) {
+
+		Instructor instructor = new Instructor("Susan", "Public", "darby@pop2c.com");
+
+		// create the instructor details
+		InstructorDetail tempInstructorDetail = new
+				InstructorDetail("https://www.youtube.com/@vg", "Video Games");
+
+		// associate the objects
+		instructor.setInstructorDetail(tempInstructorDetail);
+
+        // create some courses
+        Course course1 = new Course("Spring Boot in Action");
+        Course course2 = new Course("Spring MVC in Action");
+
+        // add the courses to the instructor
+        instructor.add(course1);
+        instructor.add(course2);
+
+        // save the instructor
+        theAppDAO.save(instructor);
+
+        // save the intructor
+        //
+        // NOTE: this will ALSO save the course
+        // because of CascadeType.PERSIST
+        //
+        System.out.println("Saving instructor: " + instructor);
+        System.out.println("The courses: " + instructor.getCourses());
+
+        System.out.println("Done!");
+
+    }
+
+    private void deleteInstructorDetail(AppDAO theAppDAO) {
 
 		int theId = 3;
 		System.out.println("Deleting the instructor detqil" + theId);
