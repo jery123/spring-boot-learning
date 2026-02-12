@@ -15,7 +15,7 @@ public class Course {
     @Column(name="title")
     private String title;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE, } )
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
@@ -23,6 +23,14 @@ public class Course {
         this.id = id;
         this.title = title;
         this.instructor = instructor;
+    }
+
+    public Course() {
+        
+    }
+
+    public Course(String title){
+        this.title = title;
     }
 
     public int getId() {

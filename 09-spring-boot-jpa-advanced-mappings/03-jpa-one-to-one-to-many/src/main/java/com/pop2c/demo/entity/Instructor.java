@@ -2,6 +2,9 @@ package com.pop2c.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Instructor {
 
@@ -23,6 +26,8 @@ public class Instructor {
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
 
+    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Course> courses;
     public Instructor(){}
 
     public Instructor(String firstName, String lastName, String email) {
@@ -80,5 +85,22 @@ public class Instructor {
                 ", email='" + email + '\'' +
                 ", instructorDetail=" + instructorDetail +
                 '}';
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    // add convenience methods for bi-directional relationship
+    public void add(Course tempCourse){
+        if(courses == null){
+            courses = new ArrayList<>();
+        }
+
+        courses.add(tempCourse);
     }
 }
