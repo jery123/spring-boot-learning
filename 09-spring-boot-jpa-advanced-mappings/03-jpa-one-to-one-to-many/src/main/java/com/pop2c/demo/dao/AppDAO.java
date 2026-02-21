@@ -1,7 +1,10 @@
 package com.pop2c.demo.dao;
 
+import com.pop2c.demo.entity.Course;
 import com.pop2c.demo.entity.Instructor;
 import com.pop2c.demo.entity.InstructorDetail;
+
+import java.util.List;
 
 public interface AppDAO {
 
@@ -14,4 +17,12 @@ public interface AppDAO {
     InstructorDetail findInstructorDetailById(int theId);
 
     void deleteInstructorDetailById(int theId);
+
+    List<Course> findConrsesByInstructorId(int theId);
+
+    Instructor findInstructorByJoinFetch(int theId);
+
+    void update(Instructor tempInstructor);
+
+
 }

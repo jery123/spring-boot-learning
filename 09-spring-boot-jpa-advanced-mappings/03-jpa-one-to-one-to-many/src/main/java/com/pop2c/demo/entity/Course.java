@@ -19,14 +19,7 @@ public class Course {
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
-    public Course(int id, String title, Instructor instructor) {
-        this.id = id;
-        this.title = title;
-        this.instructor = instructor;
-    }
-
     public Course() {
-        
     }
 
     public Course(String title){
