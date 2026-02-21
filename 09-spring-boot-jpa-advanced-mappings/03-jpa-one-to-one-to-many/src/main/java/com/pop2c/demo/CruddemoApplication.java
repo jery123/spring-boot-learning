@@ -52,7 +52,9 @@ public class CruddemoApplication {
 
 //            updateInstructor(theAppDAO);
 
-			updateCourse(theAppDAO);
+//			updateCourse(theAppDAO);
+
+			deleteInstructor(theAppDAO);
 		};
 	}
 
@@ -188,7 +190,7 @@ public class CruddemoApplication {
 
 	private void deleteInstructor(AppDAO theAppDAO) {
 
-        int theId = 1;
+        int theId = 7;
 
         System.out.println("Deleting instructor id:" + theId);
 
