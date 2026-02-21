@@ -5,6 +5,7 @@ import com.pop2c.demo.dao.AppDAOImpl;
 import com.pop2c.demo.entity.Course;
 import com.pop2c.demo.entity.Instructor;
 import com.pop2c.demo.entity.InstructorDetail;
+import com.pop2c.demo.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,8 +33,28 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(AppDAO theAppDAO, AppDAOImpl appDAOImpl) {
 
 		return runner -> {
-
+			createCourseAndReviews(theAppDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO theAppDAO) {
+
+		// create a course
+		Course tempCourse = new Course("Learn OMNI-PHP for free");
+
+		// add some reviews
+		tempCourse.addReview(new Review("Great course... Loved it!"));
+		tempCourse.addReview(new Review("Cool course, well done."));
+		tempCourse.addReview(new Review("What a dumb course, you are an idiot!"));
+
+		// save the coure
+		log("Saving course");
+		log(tempCourse.toString());
+		log(tempCourse.getReviews().toString());
+
+		theAppDAO.save(tempCourse);
+
+		log("Done!");
 	}
 
 	private void deleteCourseById(AppDAO theAppDAO) {
