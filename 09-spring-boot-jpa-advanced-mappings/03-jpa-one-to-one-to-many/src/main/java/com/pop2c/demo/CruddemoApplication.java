@@ -54,8 +54,21 @@ public class CruddemoApplication {
 
 //			updateCourse(theAppDAO);
 
-			deleteInstructor(theAppDAO);
+//			deleteInstructor(theAppDAO);
+
+			deleteCourseById(theAppDAO);
 		};
+	}
+
+	private void deleteCourseById(AppDAO theAppDAO) {
+		int theId = 21;
+
+		// log
+		log("Deleting course id: " + theId);
+
+		theAppDAO.deleteCourseById(theId);
+
+		log("Done!");
 	}
 
 	private void updateCourse(AppDAO theAppDAO) {
