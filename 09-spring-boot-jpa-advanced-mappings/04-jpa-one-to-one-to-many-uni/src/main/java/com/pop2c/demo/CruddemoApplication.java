@@ -49,7 +49,7 @@ public class CruddemoApplication {
 		log(tempCourse.toString());
 
 		// print the reviews
-		log(tempCourse.getReviews().toString());
+		log(tempCourse.getReviews() .toString());
 	}
 
 	private void createCourseAndReviews(AppDAO theAppDAO) {
