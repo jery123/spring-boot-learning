@@ -40,7 +40,7 @@ public class CruddemoApplication {
 
 		int theId = 12;
 
-		Course tempCourse = theAppDAO.findCourseAndReviewByCourseId(theId);
+		Course tempCourse = theAppDAO.findCourseAndStudentByCourseId(theId);
 
 		log("Loaded course: " + tempCourse);
 		log("Students: " + tempCourse.getStudents());
