@@ -3,6 +3,7 @@ package com.pop2c.demo.dao;
 import com.pop2c.demo.entity.Course;
 import com.pop2c.demo.entity.Instructor;
 import com.pop2c.demo.entity.InstructorDetail;
+import com.pop2c.demo.entity.Student;
 
 import java.util.List;
 
@@ -35,5 +36,9 @@ public interface AppDAO {
     Course findCourseAndReviewByCourseId(int theId);
 
     Course findCourseAndStudentByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
+
+    
 
 }
