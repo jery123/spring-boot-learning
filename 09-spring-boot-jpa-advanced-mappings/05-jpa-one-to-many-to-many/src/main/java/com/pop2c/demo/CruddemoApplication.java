@@ -34,13 +34,53 @@ public class CruddemoApplication {
 
 			// findCourseAndStudents(theAppDAO);
 
-			findStudentAndCourses(theAppDAO);
+			// findStudentAndCourses(theAppDAO);
+
+			// addMoreCoursesForStudent(theAppDAO);
+
+			// deleteCourseById(theAppDAO);
+
+			deleteStudent(theAppDAO);
 		};
+	}
+
+	private void deleteStudent(AppDAO theAppDAO) {
+
+		int theId = 3;
+		log("Deleting student by id: " + theId);
+
+		theAppDAO.deleteStudentById(theId);
+
+		log("Done!");
+	}
+
+
+	private void addMoreCoursesForStudent(AppDAO theAppDAO) {
+
+		int theId = 3;
+		Student tempStudent = theAppDAO.findStudentAndCoursesByStudentId(theId);
+
+		// create more courses
+		Course tempCourse1 = new Course("Learn OMNI-PHP for free");
+		Course tempCourse2 = new Course("Learn OMNI-JAVA for free");
+		Course tempCourse3 = new Course("Learn OMNI-C# for free");
+
+		// add courses to student
+		tempStudent.addCourse(tempCourse1);
+		tempStudent.addCourse(tempCourse2);
+		tempStudent.addCourse(tempCourse3);
+
+		log("Updating the student: " + tempStudent);
+		log("Associated courses: " + tempStudent.getCourses());
+
+		theAppDAO.update(tempStudent);
+
+		log("Done!");
 	}
 
 	private void findStudentAndCourses(AppDAO theAppDAO) {
 
-		int theId = 2;
+		int theId = 3;
 		Student tempStudent = theAppDAO.findStudentAndCoursesByStudentId(theId);
 
 		log("Loaded student: " + tempStudent);
@@ -128,7 +168,7 @@ public class CruddemoApplication {
 	}
 
 	private void deleteCourseById(AppDAO theAppDAO) {
-		int theId = 21;
+		int theId = 12;
 
 		// log
 		log("Deleting course id: " + theId);
