@@ -36,7 +36,21 @@ public class MyDemoLoggingAspect {
 
 
     // Apply the @Before on any method starting with add
-    @Before("execution(public void add*())")
+   /* @Before("execution(public void add*())")
+    public void beforeAddAccountAdvice() {
+        System.out.println("\n======> Executing @Before advice on addAccount() <======");
+    }*/
+
+
+    // Apply the @Before on any method starting with add and with a return type of void
+    /*@Before("execution(void add*())")
+    public void beforeAddAccountAdvice() {
+        System.out.println("\n======> Executing @Before advice on addAccount() <======");
+    }*/
+
+
+    // Apply the @Before on any method starting with add and with any return type
+    @Before("execution(* add*())")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======> Executing @Before advice on addAccount() <======");
     }
