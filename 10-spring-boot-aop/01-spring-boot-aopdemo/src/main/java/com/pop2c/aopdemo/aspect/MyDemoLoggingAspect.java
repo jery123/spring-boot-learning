@@ -29,7 +29,14 @@ public class MyDemoLoggingAspect {
 
 
     // Apply the @Before on addAccount method in AccountDAO class only
-    @Before("execution(public void com.pop2c.aopdemo.dao.AccountDAO.addAccount())")
+    /*@Before("execution(public void com.pop2c.aopdemo.dao.AccountDAO.addAccount())")
+    public void beforeAddAccountAdvice() {
+        System.out.println("\n======> Executing @Before advice on addAccount() <======");
+    }*/
+
+
+    // Apply the @Before on any method starting with add
+    @Before("execution(public void add*())")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======> Executing @Before advice on addAccount() <======");
     }
