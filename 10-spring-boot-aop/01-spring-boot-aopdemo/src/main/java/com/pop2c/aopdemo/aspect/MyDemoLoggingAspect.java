@@ -2,10 +2,13 @@ package com.pop2c.aopdemo.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@SpringBootApplication(exclude = JmxAutoConfiguration.class)
 public class MyDemoLoggingAspect {
 
     // this is where we add all of our related advices for logging
@@ -62,7 +65,13 @@ public class MyDemoLoggingAspect {
     }*/
 
     // Match method with `Account` parameter follow by more param types
-    @Before("execution(* add*(com.pop2c.aopdemo.Account, ..))")
+    /*@Before("execution(* add*(com.pop2c.aopdemo.Account, ..))")
+    public void beforeAddAccountAdvice() {
+        System.out.println("\n======> Executing @Before advice on addAccount() <======");
+    }*/
+
+    // Match on method with any parameter
+    @Before("execution(* add*(..))")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======> Executing @Before advice on addAccount() <======");
     }
