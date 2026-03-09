@@ -56,7 +56,13 @@ public class MyDemoLoggingAspect {
     }*/
 
     // Apply the @Before on any method starting with add and with any return type, having param of Account
-    @Before("execution(* add*(com.pop2c.aopdemo.Account))")
+    /*@Before("execution(* add*(com.pop2c.aopdemo.Account))")
+    public void beforeAddAccountAdvice() {
+        System.out.println("\n======> Executing @Before advice on addAccount() <======");
+    }*/
+
+    // Match method with `Account` parameter follow by more param types
+    @Before("execution(* add*(com.pop2c.aopdemo.Account, ..))")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======> Executing @Before advice on addAccount() <======");
     }

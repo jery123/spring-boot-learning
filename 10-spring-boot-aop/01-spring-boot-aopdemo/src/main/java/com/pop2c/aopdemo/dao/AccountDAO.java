@@ -4,6 +4,6 @@ import com.pop2c.aopdemo.Account;
 
 public interface AccountDAO {
 
-    void addAccount(Account theAccount);
+    void addAccount(Account theAccount, boolean vipFlag);
 
 }
