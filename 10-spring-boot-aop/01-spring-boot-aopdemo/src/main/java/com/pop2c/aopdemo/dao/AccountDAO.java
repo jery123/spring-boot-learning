@@ -1,7 +1,9 @@
 package com.pop2c.aopdemo.dao;
 
+import com.pop2c.aopdemo.Account;
+
 public interface AccountDAO {
 
-    void addAccount();
+    void addAccount(Account theAccount);
 
 }
