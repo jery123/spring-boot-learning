@@ -71,7 +71,13 @@ public class MyDemoLoggingAspect {
     }*/
 
     // Match on method with any parameter
-    @Before("execution(* add*(..))")
+    /*@Before("execution(* add*(..))")
+    public void beforeAddAccountAdvice() {
+        System.out.println("\n======> Executing @Before advice on addAccount() <======");
+    }*/
+
+    // Match on method within the specified package
+    @Before("execution(* com.pop2c.aopdemo.dao.*.*(..))")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======> Executing @Before advice on addAccount() <======");
     }
