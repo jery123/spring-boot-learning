@@ -1,0 +1,43 @@
+package com.pop2c.aopdemo;
+
+import com.pop2c.aopdemo.dao.AccountDAO;
+import com.pop2c.aopdemo.dao.MembershipDAO;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+import java.util.Arrays;
+
+@SpringBootApplication
+public class AopdemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AopdemoApplication.class, args);
+	}
+
+	@Bean
+	public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
+
+		return runner -> {
+			demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
+		};
+	}
+
+    private void demoTheBeforeAdvice(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
+
+		Account myAccount = new Account();
+
+        //call the business method
+        theAccountDAO.addAccount(myAccount, true);
+		theAccountDAO.doWork();
+
+        // call the membership business method
+        theMembershipDAO.addSillyMember();
+		theMembershipDAO.goSleep();
+
+
+    }
+
+}
