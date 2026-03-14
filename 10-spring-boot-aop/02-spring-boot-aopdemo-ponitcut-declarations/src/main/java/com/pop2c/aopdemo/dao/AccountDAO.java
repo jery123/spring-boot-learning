@@ -9,12 +9,12 @@ public interface AccountDAO {
     boolean doWork();
 
 
-    public String getName() {}
+    public String getName();
 
-    public void setName(String name) {}
+    public void setName(String name);
 
-    public String getServiceCode() {}
+    public String getServiceCode();
 
-    public void setServiceCode(String serviceCode) { }
+    public void setServiceCode(String serviceCode);
 
 }
