@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class AopdemoApplication {
@@ -21,9 +22,23 @@ public class AopdemoApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
 
 		return runner -> {
-			demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
+            //
+            // demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
+            demoTheAfterReturningAdvice(theAccountDAO);
 		};
 	}
+
+    private void demoTheAfterReturningAdvice(AccountDAO theAccountDAO) {
+
+        // call method to find the accounts
+        List<Account> theAccounts = theAccountDAO.findAccounts();
+        System.out.println("\n\nMain Program: demoTheAfterReturningAdvice");
+        System.out.println("---------");
+
+        System.out.println(theAccounts);
+
+        System.out.println("\n");
+    }
 
     private void demoTheBeforeAdvice(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
 

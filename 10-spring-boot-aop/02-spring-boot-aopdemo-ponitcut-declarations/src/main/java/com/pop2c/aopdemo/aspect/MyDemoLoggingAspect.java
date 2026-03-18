@@ -2,6 +2,7 @@ package com.pop2c.aopdemo.aspect;
 
 import com.pop2c.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -11,11 +12,29 @@ import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Aspect
 @Component
 @Order(3)
 @SpringBootApplication(exclude = JmxAutoConfiguration.class)
 public class MyDemoLoggingAspect {
+
+    // Add a new advice for @AfterReturning on the findAccounts method
+    @AfterReturning(
+            pointcut = "execution(* com.pop2c.aopdemo.dao.AccountDAO.findAccounts(..))",
+            returning = "result"
+    )
+    public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result) {
+
+        // print out which method we are advising on
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n============> Executing the @AfterReturning on method: " + method);
+
+        // print out the results of the method call
+        System.out.println("\n============> Result is: " + result);
+
+    }
 
     // Match on method within the specified package
     @Before("com.pop2c.aopdemo.aspect.LuvAopExpression.forDaoPackageAndNotGetterOrSetter()")
