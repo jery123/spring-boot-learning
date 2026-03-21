@@ -2,10 +2,7 @@ package com.pop2c.aopdemo.aspect;
 
 import com.pop2c.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
@@ -19,6 +16,21 @@ import java.util.List;
 @Order(3)
 @SpringBootApplication(exclude = JmxAutoConfiguration.class)
 public class MyDemoLoggingAspect {
+
+    @AfterThrowing(
+            pointcut="execution(* com.pop2c.aopdemo.dao.AccountDAO.findAccounts(..))",
+            throwing="theExc"
+    )
+    public void afterThrowingFindAccountsAdvice(
+            JoinPoint theJoinPoint, Throwable theExc
+    ){
+        // print out which mthod we are advising on
+        String method = theJoinPoint.getSignature().toShortString();
+        System.out.println("\n============> Executing the @AfterThrowing on method: " + method);
+
+        // log the exception
+        System.out.println("\n============> Exception: " + theExc);
+    }
 
     // Add a new advice for @AfterReturning on the findAccounts method
     @AfterReturning(
