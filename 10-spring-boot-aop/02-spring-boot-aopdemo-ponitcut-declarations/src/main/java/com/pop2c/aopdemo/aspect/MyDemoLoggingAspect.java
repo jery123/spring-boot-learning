@@ -17,6 +17,13 @@ import java.util.List;
 @SpringBootApplication(exclude = JmxAutoConfiguration.class)
 public class MyDemoLoggingAspect {
 
+    @After("execution(* com.pop2c.aopdemo.dao.AccountDAO.findAccounts(..))")
+    public void afterFianallyFindAccountsAdvice(JoinPoint joinPoint) {
+        // print out which method we are advising on
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n====>> Excuting @After (finally) on method: " + method);
+    }
+
     @AfterThrowing(
             pointcut="execution(* com.pop2c.aopdemo.dao.AccountDAO.findAccounts(..))",
             throwing="theExc"
