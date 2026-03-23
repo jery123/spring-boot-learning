@@ -2,6 +2,7 @@ package com.pop2c.aopdemo.aspect;
 
 import com.pop2c.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,34 @@ import java.util.List;
 @Order(3)
 @SpringBootApplication(exclude = JmxAutoConfiguration.class)
 public class MyDemoLoggingAspect {
+
+
+    @Around("execution(* com.pop2c.aopdemo.service.*.getFortune(..))")
+    public Object aroundGetFortune(
+            ProceedingJoinPoint theJoinPoint
+    ) throws Throwable {
+
+        // print out method we are advising on
+        String method = theJoinPoint.getSignature().toShortString();
+        System.out.println("\n====>> Excuting @Around (finally) on method: " + method);
+
+        // get timestamp
+        long begin = System.currentTimeMillis();
+
+        // now, let's execute the method
+        Object result = theJoinPoint.proceed();
+
+        // get end timestamp
+        long end = System.currentTimeMillis();
+
+        // compute duration and display it
+        long duration = end - begin;
+        System.out.println("\n====>> Method execution time: " + duration / 1000.0 + " ms");
+
+        return result;
+    }
+
+
 
     @After("execution(* com.pop2c.aopdemo.dao.AccountDAO.findAccounts(..))")
     public void afterFianallyFindAccountsAdvice(JoinPoint joinPoint) {
