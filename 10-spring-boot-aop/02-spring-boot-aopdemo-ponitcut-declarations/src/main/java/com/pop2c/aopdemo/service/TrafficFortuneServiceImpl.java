@@ -21,4 +21,12 @@ public class TrafficFortuneServiceImpl implements TrafficFortuneService {
         return "Expect heavy traffic this morning!";
     }
 
+    @Override
+    public String getFortune(boolean tripWire) {
+      if(tripWire){
+          throw  new RuntimeException("Trip wire activated!!!");
+      }
+      return getFortune();
+    }
+
 }
