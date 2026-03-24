@@ -41,8 +41,11 @@ public class MyDemoLoggingAspect {
             // log the eception
             System.out.println(exc.getMessage());
 
+            // rethrow exception
+            throw exc;
+
             // give use a custom message
-            result = "Major accident! But no worries,  your private AOP helicopter is on the way.";
+//            result = "Major accident! But no worries,  your private AOP helicopter is on the way.";
         }
 
         // get end timestamp
